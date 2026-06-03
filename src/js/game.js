@@ -1,37 +1,30 @@
 import '../css/style.css'
-import { Actor, Engine, Vector, DisplayMode } from "excalibur"
+import { Actor, Engine, DisplayMode, SolverStrategy, Vector } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
+import { Background } from './background.js'
+import { Knight } from './knight.js'
 
 export class Game extends Engine {
+ 
+    Knight
 
     constructor() {
-        super({ 
-            width: 1280,
-            height: 720,
-            maxFps: 60,
-            displayMode: DisplayMode.FitScreen
-         })
+        super({
+            width: 1600,
+            height: 760,
+            displayMode: DisplayMode.FitScreen, 
+            suppressHiDPIScaling: true,
+            physics: {
+                solver: SolverStrategy.Arcade,
+                gravity: new Vector(0, 800),
+            }
+        })
         this.start(ResourceLoader).then(() => this.startGame())
     }
 
     startGame() {
-        console.log("start de game!")
-        const bones = new Actor()
-        bones.graphics.use(Recourses.Bones.toSprite())
-        bones.pos = new Vector(160, 60)
-        bones.vel = Vector(0, 10)
-        this.add(bones)
-
-        const fish = new Actor()
-        fish.graphics.use(Resources.Fish.toSprite())
-        fish.pos = new Vector(500, 300)
-        fish.vel = new Vector(-100,0)
-        fish.events.on("exitviewport", (e) => this.fishLeft(e))
-        this.add(fish)
-    }
-
-    fishLeft(e) {
-        e.target.pos = new Vector(1350, 300)
+        this.add(new Background())
+        this.add(new Knight())
     }
 }
 
