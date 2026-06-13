@@ -12,6 +12,7 @@ export class Knight extends Actor {
         this.pos = new Vector(engine.screen.resolution.width / 2, engine.screen.resolution.height / 3)
         this.body.collisionType = CollisionType.Active
         this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation)
+        this.scale = new Vector(0.5 , 0.5)
     }
 
 
@@ -33,6 +34,10 @@ export class Knight extends Actor {
         }
         this.vel = new Vector(xspeed, this.vel.y)
 
+            if (this.pos.y > 1200) {
+            engine.goToScene('gameover')
+        }
     }
 
 }
+
