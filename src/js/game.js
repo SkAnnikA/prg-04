@@ -30,6 +30,7 @@ export class Game extends Engine {
         })
         this.start(ResourceLoader).then(() => this.startGame())
     }
+    
     ui
     startGame() {
         this.add('level-one', new LevelOne())

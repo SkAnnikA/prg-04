@@ -1,7 +1,9 @@
 import { Actor } from "excalibur"
 
 export class Background extends Actor {
-
+    constructor() {
+        this.z = 10
+    }
     onInitialize(engine) {
         let sprite = new Sprite({
             image: Resources.Background,

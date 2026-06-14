@@ -1,6 +1,3 @@
-// this.knight = new Knight()
-// this.add(this.Knight)
-
 import { Actor, Engine, Vector, ParallaxComponent, Scene } from 'excalibur'
 import { Resources } from "./resources.js"
 import { Knight } from "./knight.js"
@@ -8,6 +5,7 @@ import { Platform } from "./platform.js"
 import { Coin } from './coin.js'
 import { Flag } from './flag.js'
 import { GameOver } from "./gameover.js"
+import { Bat } from './bat.js'
 
 
 export class LevelTwo extends Scene {

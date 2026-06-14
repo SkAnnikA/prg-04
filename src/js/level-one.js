@@ -8,6 +8,7 @@ import { Platform } from "./platform.js"
 import { Coin } from './coin.js'
 import { Flag } from './flag.js'
 import { GameOver } from "./gameover.js"
+import { Bat } from './bat.js'
 
 
 export class LevelOne extends Scene {
@@ -41,6 +42,9 @@ export class LevelOne extends Scene {
 
         //finish
         this.add(new Flag(2000, 450))
+
+        //bats
+        this.add(new Bat(450, 50))
 
 
     }
