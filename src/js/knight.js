@@ -1,5 +1,7 @@
 import { CollisionType, Actor, Vector, DegreeOfFreedom, Keys } from 'excalibur'
 import { Resources } from './resources.js'
+import { Coin } from './coin.js'
+import { Flag } from './flag.js'
 
 export class Knight extends Actor {
 
@@ -9,10 +11,12 @@ export class Knight extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.Knight.toSprite())
-        this.pos = new Vector(engine.screen.resolution.width / 2, engine.screen.resolution.height / 3)
+        // betere spawn
+        this.pos = new Vector(engine.screen.resolution.width * 0.2, engine.screen.resolution.height * 0.42)
         this.body.collisionType = CollisionType.Active
         this.body.limitDegreeOfFreedom.push(DegreeOfFreedom.Rotation)
         this.scale = new Vector(0.5 , 0.5)
+        this.on('collisionstart', (event) => this.hitObject(event, engine))
     }
 
 
@@ -39,5 +43,14 @@ export class Knight extends Actor {
         }
     }
 
+    hitObject(event, engine) {
+        const other = event.other.owner
+        if (other instanceof Coin) {
+            other.kill()
+        }
+        if (other instanceof Flag) {
+            engine.goToScene('level-two')
+        }
+    }
 }
 

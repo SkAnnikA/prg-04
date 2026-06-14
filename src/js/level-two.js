@@ -10,13 +10,13 @@ import { Flag } from './flag.js'
 import { GameOver } from "./gameover.js"
 
 
-export class LevelOne extends Scene {
+export class LevelTwo extends Scene {
 
     knight
 
     onInitialize(engine) {
         const bg = new Actor()
-        bg.graphics.use(Resources.BG.toSprite())
+        bg.graphics.use(Resources.Background2.toSprite())
         bg.pos = new Vector(engine.screen.resolution.width / 4, engine.screen.resolution.height / 4)
         bg.addComponent(new ParallaxComponent(new Vector(0.5, 0.5)))
         this.add(bg)

@@ -10,7 +10,7 @@ import { Flag } from './flag.js'
 import { GameOver } from "./gameover.js"
 
 
-export class LevelOne extends Scene {
+export class LevelTwo extends Scene {
 
     knight
 

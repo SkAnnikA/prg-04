@@ -1,18 +1,17 @@
 import { ImageSource, Sound, Resource, Loader, ImageWrapping } from 'excalibur'
 
 const Resources = {
-    BG: new ImageSource('images/background.jpg', { wrapping: ImageWrapping.Repeat}),
+    BG: new ImageSource('images/background.jpg', { wrapping: ImageWrapping.Repeat }),
+    Background2: new ImageSource('images/backgroun2.jpg', { wrapping: ImageWrapping.Repeat }),
     Gameover: new ImageSource('images/Gameover.jpg'),
     Knight: new ImageSource('images/knight.png'),
     RunningKnight: new ImageSource('images/running-knight.png'),
-    Platform: new ImageSource('images/platform.png')
+    Platform: new ImageSource('images/platform.png'),
+    Flag: new ImageSource('images/flag.png'),
+    Coin: new ImageSource('images/coin.png'),
+
 }
 
-const resourceArray = []
-for (const key in Resources) {
-    resourceArray.push(Resources[key])
-}
-
-const ResourceLoader = new Loader(resourceArray)
+const ResourceLoader = new Loader(Object.values(Resources))
 
 export { Resources, ResourceLoader }

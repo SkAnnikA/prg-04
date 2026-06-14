@@ -4,8 +4,13 @@ import { Resources, ResourceLoader } from './resources.js'
 import { Background } from './background.js'
 import { Knight } from './knight.js'
 import { Platform } from "./platform.js"
+import { Coin } from './coin.js'
+import { Flag } from './flag.js'
 import { LevelOne } from "./level-one.js"
+import { LevelTwo } from "./level-two.js"
 import { GameOver } from "./gameover.js"
+import { UI } from './UI.js'
+
 
 export class Game extends Engine {
  
@@ -25,11 +30,14 @@ export class Game extends Engine {
         })
         this.start(ResourceLoader).then(() => this.startGame())
     }
-
+    ui
     startGame() {
         this.add('level-one', new LevelOne())
+        this.add('level-two', new LevelTwo())
         this.add('gameover', new GameOver())
         this.goToScene('level-one')
+        this.ui = new UI()
+        this.add(this.ui)
         // this.add(new Background())
         // this.add(new Knight())
     }

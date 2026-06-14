@@ -12,5 +12,6 @@ export class Platform extends Actor {
     onInitialize(engine) {
         this.graphics.use(Resources.Platform.toSprite())
         this.body.collisionType = CollisionType.Fixed
+        this.scale = new Vector(0.5 , 0.5)
     }
 }
